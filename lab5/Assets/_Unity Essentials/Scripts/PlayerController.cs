@@ -12,10 +12,16 @@ public class PlayerController : MonoBehaviour
     public float powerupDuration = 5f;
     public GameObject powerupIndicator;
 
+    [Header("Effects")]
+    public ParticleSystem powerupCollectFX;
+
+    [Header("Animation")]
+    public string poweredBoolName = "IsPowered";
+
     private Rigidbody rb;
     private GameObject focalPoint;
     private bool hasPowerup;
-    public ParticleSystem powerupCollectFX;
+    private Animator indicatorAnimator;
 
     void Start()
     {
@@ -25,7 +31,10 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
 
         if (powerupIndicator != null)
+        {
             powerupIndicator.SetActive(false);
+            indicatorAnimator = powerupIndicator.GetComponent<Animator>();
+        }
     }
 
     void FixedUpdate()
@@ -49,8 +58,16 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
-            if (powerupIndicator != null) powerupIndicator.SetActive(true);
-            if (powerupCollectFX != null) powerupCollectFX.Play();
+
+            if (powerupIndicator != null)
+                powerupIndicator.SetActive(true);
+
+            if (indicatorAnimator != null)
+                indicatorAnimator.SetBool(poweredBoolName, true);
+
+            if (powerupCollectFX != null)
+                powerupCollectFX.Play();
+
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdown());
         }
@@ -71,7 +88,13 @@ public class PlayerController : MonoBehaviour
     IEnumerator PowerupCountdown()
     {
         yield return new WaitForSeconds(powerupDuration);
+
         hasPowerup = false;
-        if (powerupIndicator != null) powerupIndicator.SetActive(false);
+
+        if (indicatorAnimator != null)
+            indicatorAnimator.SetBool(poweredBoolName, false);
+
+        if (powerupIndicator != null)
+            powerupIndicator.SetActive(false);
     }
 }
