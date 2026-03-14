@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement style="flex-direction: row; justify-content: space-between; padding: 10px;">
+        <ui:Label name="FoodLabel" text="Food: 100" style="font-size: 24px; color: white; -unity-font-style: bold;" />
+        <ui:Label name="LevelLabel" text="Day 1" style="font-size: 24px; color: white; -unity-font-style: bold;" />
+    </ui:VisualElement>
+
+    <ui:VisualElement name="GameOverPanel" style="position: absolute; width: 100%; height: 100%; align-items: center; justify-content: center; background-color: rgba(0, 0, 0, 0.7); display: none;">
+        <ui:Label text="GAME OVER" style="font-size: 48px; color: red; -unity-font-style: bold; margin-bottom: 20px;" />
+        <ui:Label text="Press ENTER to restart" style="font-size: 20px; color: white;" />
+    </ui:VisualElement>
+</ui:UXML>
