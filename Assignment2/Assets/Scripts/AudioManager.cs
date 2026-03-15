@@ -39,7 +39,18 @@ public class AudioManager : MonoBehaviour
         }
         Instance = this;
 
-        musicSource = gameObject.AddComponent<AudioSource>();
+        // Background music AudioSource on Main Camera (per assignment requirement)
+        Camera mainCam = Camera.main;
+        if (mainCam != null)
+        {
+            musicSource = mainCam.GetComponent<AudioSource>();
+            if (musicSource == null)
+                musicSource = mainCam.gameObject.AddComponent<AudioSource>();
+        }
+        else
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+        }
         musicSource.loop = true;
         musicSource.volume = musicVolume;
         musicSource.playOnAwake = false;

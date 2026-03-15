@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField, Range(1f, 20f), Tooltip("Speed of smooth movement between cells")]
-    private float moveSpeed = 8f;
+    private float moveSpeed = 4f;
 
     private int cellX;
     private int cellY;

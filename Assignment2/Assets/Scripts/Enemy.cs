@@ -29,7 +29,7 @@ public class Enemy : CellObject
     public override bool PlayerWantsToEnter()
     {
         currentHP--;
-        AudioManager.Instance?.PlayWallAttack();
+        AudioManager.Instance?.PlayEnemyAttack();
 
         if (animator != null)
             animator.SetTrigger("Hit");
