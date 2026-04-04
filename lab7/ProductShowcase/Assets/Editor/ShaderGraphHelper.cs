@@ -109,6 +109,11 @@ Shader ""Custom/CyberpunkShimmer""
 }
 ";
 
+        // Ensure Shaders folder exists
+        string shadersDir = System.IO.Path.Combine(Application.dataPath, "Shaders");
+        if (!System.IO.Directory.Exists(shadersDir))
+            System.IO.Directory.CreateDirectory(shadersDir);
+
         string path = "Assets/Shaders/CyberpunkShimmer.shader";
         System.IO.File.WriteAllText(
             System.IO.Path.Combine(Application.dataPath, "..", path),

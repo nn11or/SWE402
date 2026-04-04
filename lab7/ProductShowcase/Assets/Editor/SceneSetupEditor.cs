@@ -50,6 +50,8 @@ public class SceneSetupEditor : Editor
             AssetDatabase.CreateFolder("Assets", "Scenes");
         if (!AssetDatabase.IsValidFolder("Assets/Textures"))
             AssetDatabase.CreateFolder("Assets", "Textures");
+        if (!AssetDatabase.IsValidFolder("Assets/Shaders"))
+            AssetDatabase.CreateFolder("Assets", "Shaders");
 
         // ============================================================
         // GENERATE PROCEDURAL TEXTURES
